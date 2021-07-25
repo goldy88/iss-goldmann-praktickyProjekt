@@ -1,7 +1,10 @@
 package com.sda.goldmann.iss.console;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sda.goldmann.iss.Application;
+import com.sda.goldmann.iss.client.IssClient;
 import com.sda.goldmann.iss.controller.ConsoleController;
+import com.sda.goldmann.iss.service.IssService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +14,11 @@ public class Main {
 
     public static void run() {
         var scanner = new Scanner();
-        ConsoleController consoleController = new ConsoleController();
+        IssClient issClient=new IssClient();
+        ObjectMapper objectMapper = new ObjectMapper();
+        IssService issService=new IssService(issClient, objectMapper);
+
+        ConsoleController consoleController = new ConsoleController(issService);
 
         while (true) {
             Menu.printMainMenu();
@@ -22,13 +29,13 @@ public class Main {
 
             switch (input) {
                 case 1:
-                    consoleController.getCurrentISSPosition();
+                    LOGGER.info("{}", consoleController.getCurrentISSPosition());
                     break;
                 case 2:
-                    consoleController.getISSSpeed();
+                    LOGGER.info("{}",consoleController.getISSSpeed());
                     break;
                 case 3:
-                    consoleController.getListOfPeople();
+                   LOGGER.info("{}", consoleController.getListOfPeople());
                     break;
                 default:
                     LOGGER.info("this option ({}) is not defined ", input);
