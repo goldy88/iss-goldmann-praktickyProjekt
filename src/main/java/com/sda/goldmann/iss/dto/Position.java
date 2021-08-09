@@ -1,15 +1,14 @@
-package com.sda.goldmann.iss.model;
-
+package com.sda.goldmann.iss.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class PositionIss {
+public class Position {
 
-    private Integer timestamp;
+    private Long timestamp;
     private String message;
     @JsonProperty("iss_position")
-    private Coordinates cords;
+    private Cords cords;
 
 }

@@ -1,11 +1,13 @@
-package com.sda.goldmann.iss.model;
+package com.sda.goldmann.iss.dto;
 
-import lombok.Data;
 import java.util.List;
+import lombok.Data;
 
 @Data
 public class People {
-    List<Person> people;
+
+    private List<Person> people;
     private Integer number;
     private String message;
+
 }

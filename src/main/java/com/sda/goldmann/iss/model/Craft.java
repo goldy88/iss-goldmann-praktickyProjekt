@@ -13,17 +13,17 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "person")
-public class Person {
+@Table(name = "craft")
+public class Craft {
 
-    public Person() {
+    public Craft() {
     }
 
-    public Person(String name) {
+    public Craft(String name) {
         this.name = name;
     }
 
-    public Person(String name, PersonInMeasurement personInMeasurement) {
+    public Craft(String name, PersonInMeasurement personInMeasurement) {
         this.name = name;
         this.personInMeasurement = Set.of(personInMeasurement);
     }
@@ -35,6 +35,6 @@ public class Person {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "craft_id")
     private Set<PersonInMeasurement> personInMeasurement;
 }
